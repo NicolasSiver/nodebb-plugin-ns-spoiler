@@ -14,9 +14,7 @@
         var content = payload.postData.content;
 
         if (content) {
-
             content = content.replace(spoiler, template);
-            console.log(content);
             payload.postData.content = content;
         }
 

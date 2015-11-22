@@ -23,7 +23,8 @@
     "style/forum.less"
   ],
   "scripts": [
-    "public/js/spoiler.js"
+    "public/js/spoiler.js",
+    "public/js/composer.js"
   ],
   "staticDirs": {}
 }
