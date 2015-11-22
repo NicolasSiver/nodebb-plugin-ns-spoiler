@@ -2,7 +2,7 @@
     'use strict';
 
     var spoiler  = /:{3,}([\s\S]+?):{3,}/g,
-        template = '<div class="ns-spoiler"><div class="ns-spoiler-control"><a class="btn btn-default" href="#">Spoiler</a></div><div class="ns-spoiler-content">$1</div></div>';
+        template = '<div class="ns-spoiler"><div class="ns-spoiler-control"><a class="btn btn-default" href="#"><i class="fa fa-eye"></i> spoiler</a></div><div class="ns-spoiler-content">$1</div></div>';
 
     /**
      * Performs replacements on content field.
