@@ -38,3 +38,4 @@ Spoiler's content goes here, it should start and end with at least 3 colons.
 - Add button to composer
 - Major: true spoiler, i.e. fetch content only when spoiler is opened (should have highest parse priority)
 - Support nested spoilers
+- Register spoilers on Profile view
