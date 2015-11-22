@@ -1,7 +1,7 @@
 (function (Controller) {
     'use strict';
 
-    var spoiler  = /:{3,}([\s\S]+?):{3,}/g,
+    var spoiler  = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/g,
         template = '<div class="ns-spoiler" data-open="false"><div class="ns-spoiler-control"><a class="btn btn-default" href="#"><i class="fa fa-eye"></i> spoiler</a></div><div class="ns-spoiler-content">$1</div></div>';
 
     /**
@@ -14,7 +14,9 @@
         var content = payload.postData.content;
 
         if (content) {
+
             content = content.replace(spoiler, template);
+            console.log(content);
             payload.postData.content = content;
         }
 
