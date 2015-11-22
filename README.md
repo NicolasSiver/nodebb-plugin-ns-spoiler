@@ -19,6 +19,7 @@ Spoiler. Ability to control visibility of the content in posts. Works better wit
 ## General
 
 Implementation is based on ideas from [CommonMark Talk](http://talk.commonmark.org/t/what-could-a-spoiler-tag-extension-look-like/767) group.
+If you want to alter look of the spoiler, you could use these CSS classes: `ns-spoiler`, `ns-spoiler-control`, `ns-spoiler-content`
 
 ## Code Example
 
