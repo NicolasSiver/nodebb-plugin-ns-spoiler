@@ -9,8 +9,11 @@ $(document).ready(function () {
 
         var elements = {
             MAIN   : '.ns-spoiler',
-            BUTTON : '.ns-spoiler-control',
+            BUTTON : '.ns-spoiler-control a',
             CONTENT: '.ns-spoiler-content'
+        }, classes   = {
+            OPEN_EYE : 'fa-eye',
+            CLOSE_EYE: 'fa-eye-slash'
         };
 
         $(window).on('action:topic.loading', function (e) {
@@ -25,8 +28,7 @@ $(document).ready(function () {
 
         function addListener($button) {
             $button.on('click', function (e) {
-                var $el = $(this);
-                toggle(getSpoiler($el));
+                toggle($(this));
             });
         }
 
@@ -34,9 +36,18 @@ $(document).ready(function () {
             return $child.parents(elements.MAIN);
         }
 
-        function toggle($spoiler) {
+        function toggle($button) {
+            var $spoiler = getSpoiler($button);
             var open = $spoiler.attr('data-open') === 'true';
+            var icon = $button.find('i');
+
             $spoiler.attr('data-open', !open);
+
+            if (!open) {
+                icon.removeClass(classes.OPEN_EYE).addClass(classes.CLOSE_EYE);
+            } else {
+                icon.removeClass(classes.CLOSE_EYE).addClass(classes.OPEN_EYE);
+            }
         }
     });
 });
