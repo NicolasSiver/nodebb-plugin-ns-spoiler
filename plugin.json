@@ -9,6 +9,10 @@
       "hook": "filter:parse.post",
       "method": "hooks.filters.parsePost",
       "priority": 7
+    },
+    {
+      "hook": "filter:composer.help",
+      "method": "hooks.filters.composerHelp"
     }
   ],
   "less": [
