@@ -12,6 +12,7 @@ Spoiler. Ability to control visibility of the content in posts. Works better wit
  
 
 - [General](#general)
+- [Code Example](#code-example)
 - [TODO](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
