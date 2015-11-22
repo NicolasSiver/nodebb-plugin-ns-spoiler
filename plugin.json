@@ -14,6 +14,8 @@
   "less": [
     "style/forum.less"
   ],
-  "scripts": [],
+  "scripts": [
+    "public/js/spoiler.js"
+  ],
   "staticDirs": {}
 }
