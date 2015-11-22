@@ -36,3 +36,5 @@ Spoiler's content goes here, it should start and end with at least 3 colons.
 - Tag Feature: meta conditions, ex. `:::{title:'sexy images', reputation: 80}:::` spoiler expandable for the users with 100 or more posts, with 8 or more points, with 80 or more reputation, etc.
 - Animation: expand/collapse
 - Add button to composer
+- Major: true spoiler, i.e. fetch content only when spoiler is opened
+- Support nested spoilers
