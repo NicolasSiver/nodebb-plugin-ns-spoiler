@@ -26,7 +26,7 @@ $(document).ready(function () {
         function addListener($button) {
             $button.on('click', function (e) {
                 var $el = $(this);
-                toggleVisibility(getSpoiler($el));
+                toggle(getSpoiler($el));
             });
         }
 
@@ -34,7 +34,7 @@ $(document).ready(function () {
             return $child.parents(elements.MAIN);
         }
 
-        function toggleVisibility($spoiler) {
+        function toggle($spoiler) {
             var open = $spoiler.attr('data-open') === 'true';
             $spoiler.attr('data-open', !open);
         }

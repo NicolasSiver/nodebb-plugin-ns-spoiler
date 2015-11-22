@@ -20,6 +20,14 @@ Spoiler. Ability to control visibility of the content in posts. Works better wit
 
 Implementation is based on ideas from [CommonMark Talk](http://talk.commonmark.org/t/what-could-a-spoiler-tag-extension-look-like/767) group.
 
+## Code Example
+
+```
+:::
+Spoiler's content goes here, it should start and end with at least 3 colons.
+:::
+```
+
 ## TODO
 
 - Tag Feature: Messages/Title (ability to specify message, ex. `:::sexy images:::`, in the end it will produce button with additional comment)
