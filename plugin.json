@@ -1,0 +1,19 @@
+{
+  "id": "nodebb-plugin-ns-spoiler",
+  "name": "NodeBB Spoiler",
+  "description": "Spoiler. Ability to control visibility of the content in posts. Works better with Markdown syntax.",
+  "url": "https://github.com/NicolasSiver/nodebb-plugin-ns-spoiler",
+  "library": "./plugin/index.js",
+  "hooks": [
+    {
+      "hook": "filter:parse.post",
+      "method": "hooks.filters.parsePost",
+      "priority": 7
+    }
+  ],
+  "less": [
+    "style/forum.less"
+  ],
+  "scripts": [],
+  "staticDirs": {}
+}
