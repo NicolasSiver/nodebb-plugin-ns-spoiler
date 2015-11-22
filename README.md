@@ -25,3 +25,4 @@ Implementation is based on ideas from [CommonMark Talk](http://talk.commonmark.o
 - Tag Feature: Messages/Title (ability to specify message, ex. `:::sexy images:::`, in the end it will produce button with additional comment)
 - Tag Feature: meta conditions, ex. `:::{title:'sexy images', reputation: 80}:::` spoiler expandable for the users with 100 or more posts, with 8 or more points, with 80 or more reputation, etc.
 - Animation: expand/collapse
+- Add button to composer
