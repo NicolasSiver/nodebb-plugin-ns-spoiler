@@ -17,17 +17,11 @@ $(document).ready(function () {
         };
 
         $(window).on('action:topic.loading', function (e) {
-            addListener($(elements.BUTTON));
+            addTopicListener();
         });
 
-        $(window).on('action:posts.loaded', function (e, data) {
-            data.posts.forEach(function (post, index) {
-                addListener($('[data-pid="' + post.pid + '"]').find(elements.BUTTON));
-            });
-        });
-
-        function addListener($button) {
-            $button.on('click', function (e) {
+        function addTopicListener() {
+            $('[component="topic"]').on("click", elements.BUTTON, function () {
                 toggle($(this));
             });
         }
