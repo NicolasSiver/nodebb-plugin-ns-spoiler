@@ -11,8 +11,14 @@ Spoiler. Ability to control visibility of the content in posts. Works better wit
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
  
 
+- [General](#general)
+- [TODO](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## General
+
+Implementation is based on ideas from [CommonMark Talk](http://talk.commonmark.org/t/what-could-a-spoiler-tag-extension-look-like/767) group.
 
 ## TODO
 
