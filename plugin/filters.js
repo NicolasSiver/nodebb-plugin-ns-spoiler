@@ -3,6 +3,14 @@
 
     var controller = require('./controller');
 
+    Filters.composerFormatting = function (payload, callback) {
+        payload.options.push({
+            name     : 'ns-spoiler',
+            className: 'fa fa-eye'
+        });
+        callback(null, payload);
+    };
+
     Filters.composerHelp = function (helpText, callback) {
         helpText += '<h2>Spoiler</h2>';
         helpText += 'To hide content you could use spoilers:';

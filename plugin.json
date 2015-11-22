@@ -6,13 +6,17 @@
   "library": "./plugin/index.js",
   "hooks": [
     {
+      "hook": "filter:composer.help",
+      "method": "hooks.filters.composerHelp"
+    },
+    {
+      "hook": "filter:composer.formatting",
+      "method": "hooks.filters.composerFormatting"
+    },
+    {
       "hook": "filter:parse.post",
       "method": "hooks.filters.parsePost",
       "priority": 7
-    },
-    {
-      "hook": "filter:composer.help",
-      "method": "hooks.filters.composerHelp"
     }
   ],
   "less": [
