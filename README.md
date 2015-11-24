@@ -26,7 +26,9 @@ If you want to alter look of the spoiler, you could use these CSS classes: `ns-s
 
 ```
 :::
+
 Spoiler's content goes here, it should start and end with at least 3 colons.
+
 :::
 ```
 
@@ -35,7 +37,7 @@ Spoiler's content goes here, it should start and end with at least 3 colons.
 - Tag Feature: Messages/Title (ability to specify message, ex. `:::sexy images:::`, in the end it will produce button with additional comment)
 - Tag Feature: meta conditions, ex. `:::{title:'sexy images', reputation: 80}:::` spoiler expandable for the users with 100 or more posts, with 8 or more points, with 80 or more reputation, etc.
 - Animation: expand/collapse
-- Add button to composer
 - Major: true spoiler, i.e. fetch content only when spoiler is opened (should have highest parse priority)
 - Support nested spoilers
 - Register spoilers on Profile view
+- Remove tag from last post preview
