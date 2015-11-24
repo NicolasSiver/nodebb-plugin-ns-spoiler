@@ -26,7 +26,6 @@
                 .replace(safeCloseForList, '$1$4\n$3')
                 .replace(safeShiftStart, '$2$1')
                 .replace(safeShiftEnd, '$2$1');
-            console.log(content);
             content = content.replace(spoiler, template);
             payload.postData.content = content;
         }
