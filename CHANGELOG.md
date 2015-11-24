@@ -2,6 +2,10 @@
 
 -----------
 
+### v1.1.1 - 11/23/2015
+
+- Removed logs
+
 ### v1.1.0 - 11/23/2015
 
 - Added several handlers for Markdown plugin: paragraph shifts, list unwrap
