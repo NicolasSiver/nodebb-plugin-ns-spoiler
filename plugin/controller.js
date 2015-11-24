@@ -1,8 +1,9 @@
 (function (Controller) {
     'use strict';
 
-    var spoiler  = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/g,
-        template = '<div class="ns-spoiler" data-open="false"><div class="ns-spoiler-control"><a class="btn btn-default" href="#"><i class="fa fa-eye"></i> spoiler</a></div><div class="ns-spoiler-content">$1</div></div>';
+    var spoiler      = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/g,
+        sanitizeWrap = /<(\w+)[^<]*>(:{3,})<\/\1>/g,
+        template     = '<div class="ns-spoiler" data-open="false"><div class="ns-spoiler-control"><a class="btn btn-default" href="#"><i class="fa fa-eye"></i> spoiler</a></div><div class="ns-spoiler-content">$1</div></div>';
 
     /**
      * Performs replacements on content field.
@@ -14,6 +15,9 @@
         var content = payload.postData.content;
 
         if (content) {
+            // Sanitize: remove wrapping tags, like <p>
+            content = content.replace(sanitizeWrap, '$2');
+            console.log(content);
             content = content.replace(spoiler, template);
             payload.postData.content = content;
         }
