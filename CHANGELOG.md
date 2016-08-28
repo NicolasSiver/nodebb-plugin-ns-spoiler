@@ -2,6 +2,12 @@
 
 -----------
 
+### v1.2.0 - 8/28/2016
+
+- Load composer tools when composer is activated
+- Add extra line around spoiler tags
+- Prevent spoiler inline representation
+
 ### v1.1.1 - 11/23/2015
 
 - Removed logs
