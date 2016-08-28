@@ -3,35 +3,36 @@
 $(document).ready(function () {
     'use strict';
 
-    $(window).on('action:composer.enhanced', function() {
-		prepareFormattingTools();
-	});
-
-    function prepareFormattingTools() {
+    $(window).on('action:composer.enhanced', function () {
         require([
             'composer/formatting', 'composer/controls'
         ], function (formatting, controls) {
-    
+
             var tag    = ':::',
-                nl     = '\n',
+                nl     = '\n\n',
                 prompt = 'spoiler text';
-    
+
             formatting.addButtonDispatch('ns-spoiler', composerControlDidClick);
-    
+
             function composerControlDidClick(textArea, selectionStart, selectionEnd) {
                 if (selectionStart === selectionEnd) {
-                    var hlContentStart = selectionStart + tag.length + nl.length,
+                    var hlContentStart = selectionStart + getTag().length,
                         hlContentEnd   = hlContentStart + prompt.length;
-                    controls.insertIntoTextarea(textArea, getNewSpoiler());
+                    controls.insertIntoTextarea(textArea, getNewSpoiler(prompt));
                     controls.updateTextareaSelection(textArea, hlContentStart, hlContentEnd);
                 } else {
-                    controls.wrapSelectionInTextareaWith(textArea, tag, tag);
+                    controls.wrapSelectionInTextareaWith(textArea, getTag(), getTag());
                 }
             }
-    
-            function getNewSpoiler() {
-                return tag + nl + prompt + nl + tag;
+
+            function getNewSpoiler(message) {
+                return getTag() + message + getTag();
+            }
+
+            function getTag() {
+                return nl + tag + nl;
             }
         });
-    }
+    });
+
 });
