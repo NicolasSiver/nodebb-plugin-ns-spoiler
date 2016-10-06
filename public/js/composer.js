@@ -3,6 +3,16 @@
 $(document).ready(function () {
     'use strict';
 
+    $(window).on('action:redactor.load', initRedactor);
+
+    $(window).on('action:composer.loaded', function(ev, data) {
+        console.log($.Redactor, $.Redactor.opts.plugins.indexOf('ns-spoiler'));
+        if ($.Redactor && $.Redactor.opts.plugins.indexOf('ns-spoiler') === -1) {
+            console.log('here');
+            $.Redactor.opts.plugins.push('ns-spoiler');
+        }
+    });
+
     $(window).on('action:composer.enhanced', function () {
         require([
             'composer/formatting', 'composer/controls'
@@ -35,4 +45,18 @@ $(document).ready(function () {
         });
     });
 
+    function initRedactor() {
+        $.Redactor.prototype['ns-spoiler'] = function () {
+            return {
+                init: function () {
+                    var button = this.button.add('ns-spoiler', 'Add Spoiler');
+                    this.button.setAwesome('ns-spoiler', 'fa fa-eye-slash');
+                    this.button.addCallback(button, this['ns-spoiler'].onClick);
+                },
+                onClick: function () {
+                    this.insert.html('<p>:::<br />Spoiler Text<br />:::</p>');
+                }
+            };
+        };
+    }
 });
