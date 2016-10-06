@@ -7,7 +7,6 @@ $(document).ready(function () {
 
     $(window).on('action:composer.loaded', function(ev, data) {
         if ($.Redactor && $.Redactor.opts.plugins.indexOf('ns-spoiler') === -1) {
-            console.log('here');
             $.Redactor.opts.plugins.push('ns-spoiler');
         }
     });
