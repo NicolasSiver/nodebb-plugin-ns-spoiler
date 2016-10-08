@@ -15,8 +15,14 @@
         async.waterfall([
             async.apply(Parser.prepare, content),
             function (sanitizedContent, next) {
+                var spoilerContent;
                 spoiler.lastIndex = index;
-                next(null, spoiler.exec(sanitizedContent)[1]);
+                spoilerContent = spoiler.exec(sanitizedContent);
+                if (spoilerContent) {
+                    next(null, spoilerContent[1]);
+                } else {
+                    next(new Error('Something went wrong. Spoiler content can not be found.'));
+                }
             }
         ], done);
     };
@@ -26,7 +32,6 @@
             async.apply(Parser.prepare, content),
             function (sanitizedContent, next) {
                 var execResult, textSegments = [sanitizedContent], cursor = 0, position = 0;
-
                 spoiler.lastIndex = 0;
 
                 // If there is a Spoiler in the content, content will be shattered on the chunks
