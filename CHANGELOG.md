@@ -2,6 +2,11 @@
 
 -----------
 
+### v2.0.0 - 10/8/2016
+
+- Add Redactor WYSIWYG support
+- Add installation support for NodeBB v1
+
 ### v1.2.0 - 8/28/2016
 
 - Load composer tools when composer is activated
