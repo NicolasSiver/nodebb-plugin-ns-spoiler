@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/NicolasSiver/nodebb-plugin-ns-spoiler#readme",
   "nbbpm": {
-    "compatibility": "0.x"
+    "compatibility": "^1.0.0"
   }
 }
