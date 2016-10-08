@@ -3,9 +3,11 @@
 $(document).ready(function () {
     'use strict';
 
-    $(window).on('action:redactor.load', initRedactor);
+    var tag    = ':::',
+        nl     = '\n\n',
+        prompt = 'spoiler text';
 
-    $(window).on('action:composer.loaded', function(ev, data) {
+    $(window).on('action:composer.loaded', function (ev, data) {
         if ($.Redactor && $.Redactor.opts.plugins.indexOf('ns-spoiler') === -1) {
             $.Redactor.opts.plugins.push('ns-spoiler');
         }
@@ -15,11 +17,6 @@ $(document).ready(function () {
         require([
             'composer/formatting', 'composer/controls'
         ], function (formatting, controls) {
-
-            var tag    = ':::',
-                nl     = '\n\n',
-                prompt = 'spoiler text';
-
             formatting.addButtonDispatch('ns-spoiler', composerControlDidClick);
 
             function composerControlDidClick(textArea, selectionStart, selectionEnd) {
@@ -43,18 +40,20 @@ $(document).ready(function () {
         });
     });
 
-    function initRedactor() {
+    $(window).on('action:redactor.load', function () {
         $.Redactor.prototype['ns-spoiler'] = function () {
             return {
-                init: function () {
+                init   : function () {
                     var button = this.button.add('ns-spoiler', 'Add Spoiler');
                     this.button.setAwesome('ns-spoiler', 'fa fa-eye-slash');
                     this.button.addCallback(button, this['ns-spoiler'].onClick);
                 },
                 onClick: function () {
                     this.insert.html('<p>:::<br />Spoiler Text<br />:::</p>');
+                    this.insert.html('<p>' + tag + '<br /><br />' + prompt + '<br /><br />' + tag + '</p>');
                 }
             };
         };
-    }
+    });
+
 });
