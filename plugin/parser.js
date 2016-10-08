@@ -4,12 +4,11 @@
     var async = require('async'),
         util  = require('util');
 
-    var spoiler          = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/,
+    var spoiler          = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/g,
         sanitizeWrap     = /<(\w+)[^<]*>(:{3,})<\/\1>/g,
         safeCloseForList = /(<(ul|ol)>[\s\S]+?)(:{3,})([\s\S]+?<\/\2>)/g,
         safeShiftStart   = /^(<p>)(:{3,})$/gm,
-        safeShiftEnd     = /^(:{3,})(<\/p>)$/gm,
-        template         = '<div class="ns-spoiler" data-open="false"><div class="ns-spoiler-control"><a class="btn btn-default" href="#"><i class="fa fa-eye"></i> spoiler</a></div><div class="ns-spoiler-content">$1</div></div>';
+        safeShiftEnd     = /^(:{3,})(<\/p>)$/gm;
 
 
     Parser.getContentAt = function (content, index, done) {
@@ -26,17 +25,17 @@
         async.waterfall([
             async.apply(Parser.prepare, content),
             function (sanitizedContent, next) {
-                var execResult, textSegments = [sanitizedContent], cursor = 0;
+                var execResult, textSegments = [sanitizedContent], cursor = 0, position = 0;
 
                 spoiler.lastIndex = 0;
 
                 // If there is a Spoiler in the content, content will be shattered on the chunks
                 while ((execResult = spoiler.exec(sanitizedContent)) !== null) {
-                    textSegments[cursor] = sanitizedContent.slice(0, execResult.index);
+                    textSegments[cursor] = sanitizedContent.slice(position, execResult.index);
                     textSegments[++cursor] = getTemplate(execResult.index);
                     // Rest content
-                    sanitizedContent = sanitizedContent.slice(execResult.index + execResult[0].length);
-                    textSegments[++cursor] = sanitizedContent;
+                    textSegments[++cursor] = sanitizedContent.slice(spoiler.lastIndex);
+                    position = spoiler.lastIndex;
                 }
 
                 next(null, textSegments.join(''));
