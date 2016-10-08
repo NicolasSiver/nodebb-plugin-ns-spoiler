@@ -17,17 +17,17 @@
     Controller.parsePost = function (payload, callback) {
         var content = payload.postData.content;
 
-        // 1. Sanitize: remove wrapping tags, like <p>
-        // 2. Fix not properly closed <ul> and <ol> lists
-        // 3. Fix text lines at Start, that concatenates with spoiler via paragraph
         if (content) {
+            // 1. Sanitize: remove wrapping tags, like <p>
+            // 2. Fix a not properly closed <ul> and <ol> lists
+            // 3. Fix a text lines at Start, that concatenates with spoiler via paragraph
             content = content
                 .replace(sanitizeWrap, '$2')
                 .replace(safeCloseForList, '$1$4\n$3')
                 .replace(safeShiftStart, '$2$1')
                 .replace(safeShiftEnd, '$2$1');
-            content = content.replace(spoiler, template);
-            payload.postData.content = content;
+            
+            payload.postData.content = content.replace(spoiler, template);
         }
 
         callback(null, payload);
