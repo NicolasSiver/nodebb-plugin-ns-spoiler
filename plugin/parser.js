@@ -10,11 +10,11 @@
 
 
     Parser.getContentAt = function (content, index, done) {
-        console.log(content);
+        console.log(JSON.stringify(content));
         async.waterfall([
             async.apply(Parser.prepare, content),
             function (sanitizedContent, next) {
-                console.log(sanitizedContent);
+                console.log(JSON.stringify(sanitizedContent));
                 var spoilerContent;
                 spoiler.lastIndex = index;
                 spoilerContent = spoiler.exec(sanitizedContent);
@@ -57,10 +57,11 @@
      */
     Parser.prepare = function (content, done) {
         content = content
-            .replace(constants.REG_SANITIZE_WRAP, '$2')
+            .replace(constants.REG_SANITIZE_WRAP, '$2') // Remove wrapping tags, i.e. <p>:::</p>
             .replace(constants.REG_SAFE_LIST_CLOSE, '$1$4\n$3')
-            .replace(constants.REG_SAFE_SHIFT_START, '$2$1')
-            .replace(constants.REG_SAFE_SHIFT_END, '$2$1');
+            .replace(constants.REG_SAFE_SHIFT_START, '$2$1') // Move inside a <p> tag
+            .replace(constants.REG_SAFE_SHIFT_END, '$2$1') // Move inside a </p> tag
+            .replace(constants.REG_SPOILER_TAG, '\n$1\n'); // Add necessary extra line
         done(null, content);
     };
 
