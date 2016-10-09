@@ -4,7 +4,7 @@
     var async = require('async'),
         util  = require('util');
 
-    var spoiler          = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/g,
+    var spoiler          = /^:{3,}([\s\S]+?):{3,}$/gm,
         sanitizeWrap     = /<(\w+)[^<]*>(:{3,})<\/\1>/g,
         safeCloseForList = /(<(ul|ol)>[\s\S]+?)(:{3,})([\s\S]+?<\/\2>)/g,
         safeShiftStart   = /^(<p>)(:{3,})/gm,
