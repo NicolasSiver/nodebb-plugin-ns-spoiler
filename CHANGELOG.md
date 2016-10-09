@@ -2,6 +2,12 @@
 
 -----------
 
+### v3.0.0 - 10/8/2016
+
+- Change spoiler delivering. Content of a spoiler isn't delivered anymore to the client.
+- Change HTML manipulation to create more safe result for paragraphs
+- Add requirement for multi-line spoiler, i.e. inline spoiler will not be parsed
+
 ### v2.0.0 - 10/8/2016
 
 - Add Redactor WYSIWYG support

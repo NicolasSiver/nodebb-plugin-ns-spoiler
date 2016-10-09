@@ -4,7 +4,7 @@
   "description": "Spoiler. Ability to control visibility of the content in posts. Works better with Markdown syntax.",
   "main": "./plugin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ./test/setup --recursive"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
   },
   "dependencies": {
     "async": "^2.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.0"
   }
 }

@@ -10,11 +10,9 @@
 
 
     Parser.getContentAt = function (content, index, done) {
-        console.log(JSON.stringify(content));
         async.waterfall([
             async.apply(Parser.prepare, content),
             function (sanitizedContent, next) {
-                console.log(JSON.stringify(sanitizedContent));
                 var spoilerContent;
                 spoiler.lastIndex = index;
                 spoilerContent = spoiler.exec(sanitizedContent);
