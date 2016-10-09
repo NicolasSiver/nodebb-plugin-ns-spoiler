@@ -4,16 +4,16 @@
 (function (SocketService) {
     'use strict';
 
-    var controller = require('./controller'),
+    let constants  = require('./constants'),
+        controller = require('./controller'),
         nodebb     = require('./nodebb');
 
-    var NAMESPACE = 'ns-spoiler',
-        sockets   = nodebb.pluginSockets;
+    let sockets = nodebb.pluginSockets;
 
     SocketService.init = function (callback) {
-        sockets[NAMESPACE] = {};
+        sockets[constants.SOCKET_NAMESPACE] = {};
         //Acknowledgements
-        sockets[NAMESPACE].getSpoilerContent = SocketService.getSpoilerContent;
+        sockets[constants.SOCKET_NAMESPACE].getSpoilerContent = SocketService.getSpoilerContent;
 
         callback();
     };

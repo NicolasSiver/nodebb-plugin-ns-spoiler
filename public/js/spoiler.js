@@ -51,7 +51,7 @@ $(document).ready(function () {
             }
 
             // Check if content is empty
-            if ($content.text().length == 0) {
+            if ($content.html().length == 0) {
                 socket.emit(
                     'plugins.ns-spoiler.getSpoilerContent',
                     {index: index, postId: postId},
