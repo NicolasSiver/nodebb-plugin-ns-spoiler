@@ -1,14 +1,12 @@
 (function (Parser) {
     'use strict';
 
-    var async = require('async'),
+    let async = require('async'),
         util  = require('util');
 
-    var spoiler          = /^:{3,}([\s\S]+?):{3,}$/gm,
-        sanitizeWrap     = /<(\w+)[^<]*>(:{3,})<\/\1>/g,
-        safeCloseForList = /(<(ul|ol)>[\s\S]+?)(:{3,})([\s\S]+?<\/\2>)/g,
-        safeShiftStart   = /^(<p>)(:{3,})/gm,
-        safeShiftEnd     = /(:{3,})(<\/p>)$/gm;
+    let constants = require('./constants');
+
+    var spoiler = new RegExp(constants.REG_SPOILER.source, constants.REG_SPOILER.flags);
 
 
     Parser.getContentAt = function (content, index, done) {
@@ -59,10 +57,10 @@
      */
     Parser.prepare = function (content, done) {
         content = content
-            .replace(sanitizeWrap, '$2')
-            .replace(safeCloseForList, '$1$4\n$3')
-            .replace(safeShiftStart, '$2$1')
-            .replace(safeShiftEnd, '$2$1');
+            .replace(constants.REG_SANITIZE_WRAP, '$2')
+            .replace(constants.REG_SAFE_LIST_CLOSE, '$1$4\n$3')
+            .replace(constants.REG_SAFE_SHIFT_START, '$2$1')
+            .replace(constants.REG_SAFE_SHIFT_END, '$2$1');
         done(null, content);
     };
 
