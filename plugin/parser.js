@@ -7,14 +7,16 @@
     var spoiler          = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/g,
         sanitizeWrap     = /<(\w+)[^<]*>(:{3,})<\/\1>/g,
         safeCloseForList = /(<(ul|ol)>[\s\S]+?)(:{3,})([\s\S]+?<\/\2>)/g,
-        safeShiftStart   = /^(<p>)(:{3,})$/gm,
-        safeShiftEnd     = /^(:{3,})(<\/p>)$/gm;
+        safeShiftStart   = /^(<p>)(:{3,})/gm,
+        safeShiftEnd     = /(:{3,})(<\/p>)$/gm;
 
 
     Parser.getContentAt = function (content, index, done) {
+        console.log(content);
         async.waterfall([
             async.apply(Parser.prepare, content),
             function (sanitizedContent, next) {
+                console.log(sanitizedContent);
                 var spoilerContent;
                 spoiler.lastIndex = index;
                 spoilerContent = spoiler.exec(sanitizedContent);
