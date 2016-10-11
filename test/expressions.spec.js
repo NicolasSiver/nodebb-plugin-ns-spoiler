@@ -1,4 +1,5 @@
-var expect = require('chai').expect;
+var cloneRegexp = require('clone-regexp'),
+    expect = require('chai').expect;
 
 var constants = require('../plugin/constants');
 
@@ -6,7 +7,7 @@ describe('Regular Expressions', () => {
     var spoilerReg;
 
     beforeEach(() => {
-        spoilerReg = new RegExp(constants.REG_SPOILER.source, 'g');
+        spoilerReg = cloneRegexp(constants.REG_SPOILER);
     });
 
     function wrap(content) {
