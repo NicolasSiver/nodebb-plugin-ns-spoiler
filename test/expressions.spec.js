@@ -6,7 +6,7 @@ describe('Regular Expressions', () => {
     var spoilerReg;
 
     beforeEach(() => {
-        spoilerReg = new RegExp(constants.REG_SPOILER.source, constants.REG_SPOILER.flags);
+        spoilerReg = new RegExp(constants.REG_SPOILER.source, 'g');
     });
 
     function wrap(content) {
