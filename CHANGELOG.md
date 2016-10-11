@@ -2,7 +2,11 @@
 
 -----------
 
-### v3.0.1 - 19/10/2016
+### v3.0.2 - 10/10/2016
+
+- Fix RegExp clone for Node v4 environments
+
+### v3.0.1 - 10/10/2016
 
 - Use template string for spoiler template
 
