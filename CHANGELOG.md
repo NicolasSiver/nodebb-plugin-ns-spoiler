@@ -2,6 +2,10 @@
 
 -----------
 
+### v3.0.1 - 19/10/2016
+
+- Use template string for spoiler template
+
 ### v3.0.0 - 10/8/2016
 
 - Change spoiler delivering. Content of a spoiler isn't delivered anymore to the client.
