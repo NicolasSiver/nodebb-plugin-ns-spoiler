@@ -1,11 +1,11 @@
 (function (Parser) {
     'use strict';
 
-    let async = require('async');
+    var async = require('async');
 
-    let constants = require('./constants');
+    var constants = require('./constants');
 
-    let spoiler = new RegExp(constants.REG_SPOILER.source, constants.REG_SPOILER.flags);
+    var spoiler = new RegExp(constants.REG_SPOILER.source, constants.REG_SPOILER.flags);
 
     Parser.getContentAt = function (content, index, done) {
         async.waterfall([

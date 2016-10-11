@@ -4,11 +4,11 @@
 (function (SocketService) {
     'use strict';
 
-    let constants  = require('./constants'),
+    var constants  = require('./constants'),
         controller = require('./controller'),
         nodebb     = require('./nodebb');
 
-    let sockets = nodebb.pluginSockets;
+    var sockets = nodebb.pluginSockets;
 
     SocketService.init = function (callback) {
         sockets[constants.SOCKET_NAMESPACE] = {};

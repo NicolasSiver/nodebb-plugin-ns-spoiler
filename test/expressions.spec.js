@@ -1,9 +1,9 @@
-let expect = require('chai').expect;
+var expect = require('chai').expect;
 
-let constants = require('../plugin/constants');
+var constants = require('../plugin/constants');
 
 describe('Regular Expressions', () => {
-    let spoilerReg;
+    var spoilerReg;
 
     beforeEach(() => {
         spoilerReg = new RegExp(constants.REG_SPOILER.source, constants.REG_SPOILER.flags);
@@ -14,14 +14,14 @@ describe('Regular Expressions', () => {
     }
 
     it('matches spoiler', function () {
-        let content = `<p><br />
+        var content = `<p><br />
 spoiler content 1<br />
 </p>`;
         expect(spoilerReg.exec(wrap(content))).to.not.be.null;
     });
 
     it('captures all inner content', function () {
-        let content = `<p>content<br /></p>`;
+        var content = `<p>content<br /></p>`;
         expect(spoilerReg.exec(wrap(content))[1]).to.be.equal(content);
     });
 

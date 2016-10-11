@@ -1,9 +1,9 @@
 (function (Controller) {
     'use strict';
 
-    let async = require('async');
+    var async = require('async');
 
-    let constants = require('./constants'),
+    var constants = require('./constants'),
         nodebb    = require('./nodebb'),
         parser    = require('./parser');
 
@@ -29,7 +29,7 @@
      * @param callback returns updated content
      */
     Controller.parsePost = function (payload, callback) {
-        let content     = payload.postData.content,
+        var content     = payload.postData.content,
             rejectParse = payload.postData[constants.PARSE_REJECT_TOKEN];
 
         if (content && !rejectParse) {

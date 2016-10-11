@@ -1,6 +1,6 @@
-let expect = require('chai').expect;
+var expect = require('chai').expect;
 
-let parser = require('../plugin/parser');
+var parser = require('../plugin/parser');
 
 describe('Parser', () => {
 
