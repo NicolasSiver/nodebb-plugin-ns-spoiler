@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     var tag    = ':::',
         nl     = '\n\n',
-        prompt = 'spoiler text';
+        textPrompt = 'Spoiler Text';
 
     $(window).on('action:composer.loaded', function (ev, data) {
         if ($.Redactor && $.Redactor.opts.plugins.indexOf('ns-spoiler') === -1) {
@@ -22,8 +22,8 @@ $(document).ready(function () {
             function composerControlDidClick(textArea, selectionStart, selectionEnd) {
                 if (selectionStart === selectionEnd) {
                     var hlContentStart = selectionStart + getTag().length,
-                        hlContentEnd   = hlContentStart + prompt.length;
-                    controls.insertIntoTextarea(textArea, getNewSpoiler(prompt));
+                        hlContentEnd   = hlContentStart + textPrompt.length;
+                    controls.insertIntoTextarea(textArea, getNewSpoiler(textPrompt));
                     controls.updateTextareaSelection(textArea, hlContentStart, hlContentEnd);
                 } else {
                     controls.wrapSelectionInTextareaWith(textArea, getTag(), getTag());
@@ -49,8 +49,7 @@ $(document).ready(function () {
                     this.button.addCallback(button, this['ns-spoiler'].onClick);
                 },
                 onClick: function () {
-                    this.insert.html('<p>:::<br />Spoiler Text<br />:::</p>');
-                    this.insert.html('<p>' + tag + '<br /><br />' + prompt + '<br /><br />' + tag + '</p>');
+                    this.insert.html('<p>' + tag + '<br /><br />' + textPrompt + '<br /><br />' + tag + '</p>');
                 }
             };
         };
