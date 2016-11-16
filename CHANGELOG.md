@@ -2,6 +2,10 @@
 
 -----------
 
+### v3.0.3 - 11/15/2016
+
+- Fix a duplicate spoiler template for a Redactor
+
 ### v3.0.2 - 10/10/2016
 
 - Fix RegExp clone for Node v4 environments
