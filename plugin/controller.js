@@ -7,15 +7,31 @@
         nodebb    = require('./nodebb'),
         parser    = require('./parser');
 
+    /**
+     * Get spoiler content.
+     * Because spoiler content is not cached or stored, previous hook chain should be accounted to find
+     * a corresponding spoiler content.
+     *
+     * @param {object} payload request for spoiler content
+     * @param {string} payload.postId post identifier
+     * @param {number} payload.index initial index where spoiler content starts
+     * @param {function} callback
+     */
     Controller.getSpoilerContent = function (payload, callback) {
         async.waterfall([
             async.apply(nodebb.posts.getPostFields, payload.postId, ['content']),
-            function preventParse(post, next) {
+            // Trigger parsing process
+            function chainParse(post, next) {
                 post[constants.PARSE_REJECT_TOKEN] = true;
-                next(null, post);
+
+                nodebb.plugins.fireHook('filter:parse.post', {postData: post}, function (error, hookResult) {
+                    if (error) {
+                        return next(error);
+                    }
+
+                    next(null, hookResult.postData);
+                });
             },
-            // Trigger parsing process, it will invoke `Controller.parsePost` through hooks
-            async.apply(nodebb.posts.parsePost),
             function (post, next) {
                 parser.getContentAt(post.content, payload.index, next);
             }
@@ -25,8 +41,9 @@
     /**
      * Performs replacements on content field.
      *
-     * @param payload {object} - includes full post entity Payload.postData.content
-     * @param callback returns updated content
+     * @param {object} payload - includes full post entity
+     * @param {object} payload.postData a post object with 'content' field
+     * @param {function} callback returns updated content
      */
     Controller.parsePost = function (payload, callback) {
         var content     = payload.postData.content,
@@ -38,6 +55,7 @@
                 callback(error, payload);
             });
         } else {
+            // Skip hook chain if reject token is set
             callback(null, payload);
         }
     };

@@ -10,6 +10,7 @@
         emitter      : NodeBB.require('./src/emitter'),
         groups       : NodeBB.require('./src/groups'),
         meta         : NodeBB.require('./src/meta'),
+        plugins      : NodeBB.require('./src/plugins'),
         pluginSockets: NodeBB.require('./src/socket.io/plugins'),
         posts        : NodeBB.require('./src/posts'),
         serverSockets: NodeBB.require('./src/socket.io').server.sockets,
