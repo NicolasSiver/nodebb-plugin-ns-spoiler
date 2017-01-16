@@ -2,6 +2,11 @@
 
 -----------
 
+### v3.1.0 - 1/16/2017
+
+- Change internal logic to use a plugins hooks
+- Fix issue with spoiler content
+
 ### v3.0.3 - 11/15/2016
 
 - Fix a duplicate spoiler template for a Redactor
