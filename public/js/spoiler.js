@@ -26,19 +26,11 @@ $(document).ready(function () {
             });
         }
 
-        function getPostId($child) {
-            return parseInt($child.parents('[data-pid]').attr('data-pid'));
-        }
-
-        function getSpoiler($child) {
-            return $child.parents(elements.MAIN);
-        }
-
         function toggle($button) {
-            var $spoiler = getSpoiler($button),
+            var $spoiler = $button.parents(elements.MAIN),
                 $content = $spoiler.find(elements.CONTENT),
                 open     = $spoiler.attr('data-open') === 'true',
-                postId   = getPostId($button),
+                postId   = parseInt($spoiler.parents('[data-pid]').attr('data-pid')),
                 index    = parseInt($spoiler.attr('data-index')),
                 icon     = $button.find('i');
 
