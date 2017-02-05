@@ -2,7 +2,6 @@
 
 $(document).ready(function () {
     'use strict';
-
     require([
         'translator'
     ], function (translator) {
@@ -52,6 +51,7 @@ $(document).ready(function () {
                             return console.error('Error has occurred, error: %s', error.message);
                         }
                         $content.html(content);
+                        $spoiler.find('img').attr('data-state', 'loaded');
                     }
                 );
             }
