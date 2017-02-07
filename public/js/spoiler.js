@@ -4,13 +4,15 @@ $(document).ready(function () {
     'use strict';
 
     require([
+        'forum/topic/posts',
         'translator'
-    ], function (translator) {
+    ], function (posts, translator) {
 
         var elements = {
-            MAIN   : '.ns-spoiler',
             BUTTON : '.ns-spoiler-control a',
-            CONTENT: '.ns-spoiler-content'
+            CONTENT: '.ns-spoiler-content',
+            MAIN   : '.ns-spoiler',
+            POST   : '.post-content'
         }, classes   = {
             OPEN_EYE : 'fa-eye',
             CLOSE_EYE: 'fa-eye-slash'
@@ -52,6 +54,8 @@ $(document).ready(function () {
                             return console.error('Error has occurred, error: %s', error.message);
                         }
                         $content.html(content);
+                        posts.unloadImages($spoiler.parents(elements.POST));
+                        posts.loadImages();
                     }
                 );
             }
