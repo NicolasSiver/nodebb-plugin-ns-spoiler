@@ -3,7 +3,7 @@
 ## v4.0.0 - 2/6/2017
 
 - Add compatibility with NodeBB v1.1.0
-- Change content rendering to accommodate image lazy loading
+- Change content rendering to accommodate image lazy loading (Thanks to segura2010)
 
 ## v3.1.0 - 1/16/2017
 
