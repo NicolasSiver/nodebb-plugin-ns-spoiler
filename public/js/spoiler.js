@@ -12,7 +12,7 @@ $(document).ready(function () {
             BUTTON : '.ns-spoiler-control a',
             CONTENT: '.ns-spoiler-content',
             MAIN   : '.ns-spoiler',
-            POST   : '.post-content'
+            POST   : '[component="post"]'
         }, classes   = {
             OPEN_EYE : 'fa-eye',
             CLOSE_EYE: 'fa-eye-slash'
