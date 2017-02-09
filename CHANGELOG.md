@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.0.1 - 2/8/2017
+
+- Change parent content identifier for image loading
+
 ## v4.0.0 - 2/6/2017
 
 - Add compatibility with NodeBB v1.1.0
