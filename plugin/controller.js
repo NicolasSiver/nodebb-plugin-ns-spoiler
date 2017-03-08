@@ -1,36 +1,63 @@
 (function (Controller) {
     'use strict';
 
-    var spoiler          = /:{3,}\s*(?:<br\s*\/?>\s*)*([\s\S]+?):{3,}/g,
-        sanitizeWrap     = /<(\w+)[^<]*>(:{3,})<\/\1>/g,
-        safeCloseForList = /(<(ul|ol)>[\s\S]+?)(:{3,})([\s\S]+?<\/\2>)/g,
-        safeShiftStart   = /^(<p>)(:{3,})$/gm,
-        safeShiftEnd     = /^(:{3,})(<\/p>)$/gm,
-        template         = '<div class="ns-spoiler" data-open="false"><div class="ns-spoiler-control"><a class="btn btn-default" href="#"><i class="fa fa-eye"></i> spoiler</a></div><div class="ns-spoiler-content">$1</div></div>';
+    var async = require('async');
+
+    var constants = require('./constants'),
+        nodebb    = require('./nodebb'),
+        parser    = require('./parser');
+
+    /**
+     * Get spoiler content.
+     * Because spoiler content is not cached or stored, previous hook chain should be accounted to find
+     * a corresponding spoiler content.
+     *
+     * @param {object} payload request for spoiler content
+     * @param {string} payload.postId post identifier
+     * @param {number} payload.index initial index where spoiler content starts
+     * @param {function} callback
+     */
+    Controller.getSpoilerContent = function (payload, callback) {
+        async.waterfall([
+            async.apply(nodebb.posts.getPostFields, payload.postId, ['content']),
+            // Trigger parsing process
+            function chainParse(post, next) {
+                post[constants.PARSE_REJECT_TOKEN] = true;
+
+                nodebb.plugins.fireHook('filter:parse.post', {postData: post}, function (error, hookResult) {
+                    if (error) {
+                        return next(error);
+                    }
+
+                    next(null, hookResult.postData);
+                });
+            },
+            function (post, next) {
+                parser.getContentAt(post.content, payload.index, next);
+            }
+        ], callback);
+    };
 
     /**
      * Performs replacements on content field.
      *
-     * @param payload {object} - includes full post entity Payload.postData.content
-     * @param callback returns updated content
+     * @param {object} payload - includes full post entity
+     * @param {object} payload.postData a post object with 'content' field
+     * @param {function} callback returns updated content
      */
     Controller.parsePost = function (payload, callback) {
-        var content = payload.postData.content;
+        var content     = payload.postData.content,
+            rejectParse = payload.postData[constants.PARSE_REJECT_TOKEN];
 
-        // 1. Sanitize: remove wrapping tags, like <p>
-        // 2. Fix not properly closed <ul> and <ol> lists
-        // 3. Fix text lines at Start, that concatenates with spoiler via paragraph
-        if (content) {
-            content = content
-                .replace(sanitizeWrap, '$2')
-                .replace(safeCloseForList, '$1$4\n$3')
-                .replace(safeShiftStart, '$2$1')
-                .replace(safeShiftEnd, '$2$1');
-            content = content.replace(spoiler, template);
-            payload.postData.content = content;
+        if (content && !rejectParse) {
+            parser.parse(content, function (error, parsedContent) {
+                payload.postData.content = parsedContent;
+                callback(error, payload);
+            });
+        } else {
+            // Skip hook chain if reject token is set
+            callback(null, payload);
         }
-
-        callback(null, payload);
     };
 
 })(module.exports);

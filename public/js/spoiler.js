@@ -4,13 +4,15 @@ $(document).ready(function () {
     'use strict';
 
     require([
+        'forum/topic/posts',
         'translator'
-    ], function (translator) {
+    ], function (posts, translator) {
 
         var elements = {
-            MAIN   : '.ns-spoiler',
             BUTTON : '.ns-spoiler-control a',
-            CONTENT: '.ns-spoiler-content'
+            CONTENT: '.ns-spoiler-content',
+            MAIN   : '.ns-spoiler',
+            POST   : '[component="post"]'
         }, classes   = {
             OPEN_EYE : 'fa-eye',
             CLOSE_EYE: 'fa-eye-slash'
@@ -26,14 +28,13 @@ $(document).ready(function () {
             });
         }
 
-        function getSpoiler($child) {
-            return $child.parents(elements.MAIN);
-        }
-
         function toggle($button) {
-            var $spoiler = getSpoiler($button);
-            var open = $spoiler.attr('data-open') === 'true';
-            var icon = $button.find('i');
+            var $spoiler = $button.parents(elements.MAIN),
+                $content = $spoiler.find(elements.CONTENT),
+                open     = $spoiler.attr('data-open') === 'true',
+                postId   = parseInt($spoiler.parents('[data-pid]').attr('data-pid')),
+                index    = parseInt($spoiler.attr('data-index')),
+                icon     = $button.find('i');
 
             $spoiler.attr('data-open', !open);
 
@@ -42,6 +43,23 @@ $(document).ready(function () {
             } else {
                 icon.removeClass(classes.CLOSE_EYE).addClass(classes.OPEN_EYE);
             }
+
+            // Check if content is empty
+            if ($content.html().length == 0) {
+                socket.emit(
+                    'plugins.ns-spoiler.getSpoilerContent',
+                    {index: index, postId: postId},
+                    function (error, content) {
+                        if (error) {
+                            return console.error('Error has occurred, error: %s', error.message);
+                        }
+                        $content.html(content);
+                        posts.unloadImages($spoiler.parents(elements.POST));
+                        posts.loadImages();
+                    }
+                );
+            }
+
         }
     });
 });
