@@ -48,7 +48,7 @@ $(document).ready(function () {
             return {
                 init: function () {
                     var button = this.button.add('ns-spoiler', 'Add Spoiler');
-                    this.button.setAwesome('ns-spoiler', 'fa fa-eye-slash');
+                    this.button.setIcon(button, '<i class="fa fa-eye-slash"></i>');
                     this.button.addCallback(button, this['ns-spoiler'].onClick);
                 },
                 onClick: function () {
