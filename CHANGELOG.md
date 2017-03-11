@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.1.0 - 3/11/2017
+
+- Change the icon in new version of redactor
+
 ## v4.0.1 - 2/8/2017
 
 - Change parent content identifier for image loading
