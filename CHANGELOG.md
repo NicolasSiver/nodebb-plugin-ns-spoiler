@@ -1,5 +1,9 @@
 # Changelog
 
+## v5.0.0 - 4/30/2018
+
+- Added compatibility with NodeBB v1.8.2
+
 ## v4.1.0 - 3/11/2017
 
 - Change the icon in new version of redactor
