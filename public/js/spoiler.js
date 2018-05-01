@@ -4,9 +4,9 @@ $(document).ready(function () {
     'use strict';
 
     require([
-        'forum/topic/posts',
+        'forum/topic/images',
         'translator'
-    ], function (posts, translator) {
+    ], function (images, translator) {
 
         var elements = {
             BUTTON : '.ns-spoiler-control a',
@@ -45,7 +45,7 @@ $(document).ready(function () {
             }
 
             // Check if content is empty
-            if ($content.html().length == 0) {
+            if ($content.html().length === 0) {
                 socket.emit(
                     'plugins.ns-spoiler.getSpoilerContent',
                     {index: index, postId: postId},
@@ -54,8 +54,8 @@ $(document).ready(function () {
                             return console.error('Error has occurred, error: %s', error.message);
                         }
                         $content.html(content);
-                        posts.unloadImages($spoiler.parents(elements.POST));
-                        posts.loadImages();
+                        images.unloadImages($spoiler.parents(elements.POST));
+                        images.loadImages();
                     }
                 );
             }
