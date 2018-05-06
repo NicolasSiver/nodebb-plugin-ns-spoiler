@@ -1,69 +1,73 @@
 # Changelog
+All notable changes to this project will be documented in this file.
 
-## v5.0.1 - 5/6/2018
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [5.0.1] - 2018-05-06
 
 - Fixed issue with multi-list layouts.
 
-## v5.0.0 - 4/30/2018
+## [5.0.0] - 2018-04-30
 
 - Added compatibility with NodeBB v1.8.2
 
-## v4.1.0 - 3/11/2017
+## [4.1.0] - 2017-03-11
 
-- Change the icon in new version of redactor
+- Changed the icon in new version of redactor
 
-## v4.0.1 - 2/8/2017
+## [4.0.1] - 2017-02-08
 
-- Change parent content identifier for image loading
+- Changed parent content identifier for image loading
 
-## v4.0.0 - 2/6/2017
+## [4.0.0] - 2017-02-06
 
-- Add compatibility with NodeBB v1.1.0
-- Change content rendering to accommodate image lazy loading (Thanks to segura2010)
+- Added compatibility with NodeBB v1.1.0
+- Changed content rendering to accommodate image lazy loading (Thanks to segura2010)
 
-## v3.1.0 - 1/16/2017
+## [3.1.0] - 2017-01-16
 
-- Change internal logic to use a plugins hooks
-- Fix issue with spoiler content
+- Changed internal logic to use a plugins hooks
+- Fixed issue with spoiler content
 
-## v3.0.3 - 11/15/2016
+## [3.0.3] - 2016-11-15
 
-- Fix a duplicate spoiler template for a Redactor WYSIWYG
+- Fixed a duplicate spoiler template for a Redactor WYSIWYG
 
-## v3.0.2 - 10/10/2016
+## [3.0.2] - 2016-10-10
 
-- Fix RegExp clone for Node v4 environments
+- Fixed RegExp clone for Node v4 environments
 
-## v3.0.1 - 10/10/2016
+## [3.0.1] - 2016-10-10
 
-- Add template string for spoiler template
+- Added template string for spoiler template
 
-## v3.0.0 - 10/8/2016
+## [3.0.0] - 2016-10-08
 
-- Add requirement for multi-line spoiler, i.e. inline spoiler will not be parsed
-- Change spoiler delivering. Content of a spoiler isn't delivered anymore to the client.
-- Change HTML manipulation to create more safe result for paragraphs
+- Added requirement for multi-line spoiler, i.e. inline spoiler will not be parsed
+- Changed spoiler delivering. Content of a spoiler isn't delivered anymore to the client.
+- Changed HTML manipulation to create more safe result for paragraphs
 
-## v2.0.0 - 10/8/2016
+## [2.0.0] - 2016-10-08
 
-- Add Redactor WYSIWYG support
-- Add installation support for NodeBB v1
+- Added Redactor WYSIWYG support
+- Added installation support for NodeBB v1
 
-## v1.2.0 - 8/28/2016
+## [1.2.0] - 2016-08-28
 
-- Add extra line around spoiler tags
-- Add a load of composer tools when composer is activated
-- Change spoiler rendering to prevent inline representation
+- Added extra line around spoiler tags
+- Added a load of composer tools when composer is activated
+- Changed spoiler rendering to prevent inline representation
 
-## v1.1.1 - 11/23/2015
+## [1.1.1] - 2015-11-23
 
-- Remove logging information
+- Removed logging information
 
-## v1.1.0 - 11/23/2015
+## [1.1.0] - 2015-11-23
 
-- Add several handlers for Markdown plugin: paragraph shifts, list unwrap
-- Remove extra paragraph for the spoiler tag
+- Added several handlers for Markdown plugin: paragraph shifts, list unwrap
+- Removed extra paragraph for the spoiler tag
 
-## v1.0.0 - 11/22/2015
+## [1.0.0] - 2015-11-22
 
 - Initial release
