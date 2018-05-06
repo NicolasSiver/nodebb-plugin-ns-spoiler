@@ -30,8 +30,9 @@ It should have a blank lines around the 3 colons tags.
 
 ## General
 
-Implementation is based on ideas from [CommonMark Talk](http://talk.commonmark.org/t/what-could-a-spoiler-tag-extension-look-like/767) group.
+Markdown syntax is based on ideas from [CommonMark Talk](http://talk.commonmark.org/t/what-could-a-spoiler-tag-extension-look-like/767) group.
 
+This is true `spoiler` implementation where spoiler content is not loaded on the page (loading on demand or "lazy loading").
 ## Styling
 
 If you want to alter look of the spoiler, you could use these CSS classes: 
