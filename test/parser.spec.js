@@ -28,4 +28,16 @@ describe('Parser', () => {
         });
     });
 
+    it('ignores multi-list layout', function() {
+        parser.prepare(':::<ol>content</ol>:::<ol>content 2</ol>', function (error, result) {
+            expect(result).to.be.equal('\n:::\n<ol>content</ol>\n:::\n<ol>content 2</ol>');
+        });
+    });
+
+    it('moves spoiler tag from the list', function() {
+        parser.prepare('<ol>content:::</ol>', function (error, result) {
+            expect(result).to.be.equal('<ol>content</ol>\n\n:::\n');
+        });
+    })
+
 });
