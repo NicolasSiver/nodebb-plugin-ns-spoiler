@@ -1,5 +1,9 @@
 # Changelog
 
+## v5.0.1 - 5/6/2018
+
+- Fixed issue with multi-list layouts.
+
 ## v5.0.0 - 4/30/2018
 
 - Added compatibility with NodeBB v1.8.2
