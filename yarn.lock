@@ -42,12 +42,11 @@ check-error@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 
-clone-regexp@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/clone-regexp/-/clone-regexp-1.0.1.tgz#051805cd33173375d82118fc0918606da39fd60f"
+clone-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/clone-regexp/-/clone-regexp-2.0.0.tgz#d4b57da1d1841cf1f14fbf1857c27a3ce5d8b5e9"
   dependencies:
-    is-regexp "^1.0.0"
-    is-supported-regexp-flag "^1.0.0"
+    is-regexp "^2.0.0"
 
 commander@2.11.0:
   version "2.11.0"
@@ -119,13 +118,9 @@ inherits@2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
-is-regexp@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-regexp/-/is-regexp-1.0.0.tgz#fd2d883545c46bac5a633e7b9a09e87fa2cb5069"
-
-is-supported-regexp-flag@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/is-supported-regexp-flag/-/is-supported-regexp-flag-1.0.1.tgz#21ee16518d2c1dd3edd3e9a0d57e50207ac364ca"
+is-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-regexp/-/is-regexp-2.0.0.tgz#d669511d64a620c7a8dffa9a1e00710f9275ace0"
 
 lodash@^4.14.0:
   version "4.17.10"

@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "async": "^2.0.1",
-    "clone-regexp": "^1.0.0"
+    "clone-regexp": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
