@@ -47,7 +47,7 @@
 
     /**
      * 1. Sanitize: remove wrapping tags, like <p>
-     * 2. Fix a not properly closed <ul> and <ol> lists
+     * 2. Fix a improperly closed <ul> and <ol> lists
      * 3. Fix a text lines at Start, that concatenates with spoiler via paragraph
      * @param {string} content post message to process
      * @param {function} done
