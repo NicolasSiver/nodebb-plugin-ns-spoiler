@@ -1,6 +1,3 @@
-/**
- * Created by Nicolas on 10/8/16.
- */
 (function (SocketService) {
     'use strict';
 

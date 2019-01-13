@@ -1,13 +1,9 @@
-/**
- * Created by Nicolas on 10/8/16.
- */
 (function (Module, NodeBB) {
     'use strict';
 
     Module.exports = {
         adminSockets : NodeBB.require('./src/socket.io/admin').plugins,
         db           : NodeBB.require('./src/database'),
-        emitter      : NodeBB.require('./src/emitter'),
         groups       : NodeBB.require('./src/groups'),
         meta         : NodeBB.require('./src/meta'),
         plugins      : NodeBB.require('./src/plugins'),
