@@ -51,8 +51,6 @@ require([
                         return console.error('Error has occurred, error: %s', error.message);
                     }
                     $content.html(content);
-                    images.unloadImages($spoiler.parents(elements.POST));
-                    images.loadImages();
                 }
             );
         }
