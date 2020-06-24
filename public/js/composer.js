@@ -6,6 +6,10 @@ $(document).ready(function () {
         nl     = '\n',
         textPrompt = 'Spoiler Text';
 
+    function getTag() {
+        return nl + tag + nl;
+    }
+
     // Quill only adds buttons if there is a listener, so this adds a no-op and is overridden later on
     require(['composer/formatting'], function (formatting) {
         formatting.addButtonDispatch('ns-spoiler', function () {});
@@ -36,10 +40,6 @@ $(document).ready(function () {
 
             function getNewSpoiler(message) {
                 return getTag() + message + getTag();
-            }
-
-            function getTag() {
-                return nl + tag + nl;
             }
         });
     });
@@ -78,17 +78,16 @@ $(document).ready(function () {
                 quill.updateContents(new Delta()
                     .retain(range.index)
                     .delete(range.length)
-                    .insert(range.index > 0 ? '\n' : '')
-                    .insert(tag + nl)
+                    .insert(getTag())
                     .concat(insertionDelta)
-                    .insert(nl + tag + nl)
+                    .insert(getTag())
                 );
 
                 if (range.length) {
                     // Update selection
-                    quill.setSelection(range.index + (range.index > 0 ? 5 : 4), range.length);
+                    quill.setSelection(range.index + 5, range.length);
                 } else {
-                    quill.setSelection(range.index + (range.index > 0 ? 5 : 4), textPrompt.length);
+                    quill.setSelection(range.index + 5, textPrompt.length);
                 }
             });
         });
