@@ -26,11 +26,11 @@
     "compatibility": "~1.12.0"
   },
   "dependencies": {
-    "async": "^2.0.1",
-    "clone-regexp": "^2.0.0"
+    "async": "^3.2.0",
+    "clone-regexp": "^2.2.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^5.1.1"
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
   }
 }
