@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [7.0.1] - 2020-07-03
+
+- Changed library dependencies to have the latest development and production libraries
+- Removed images module dependency from Spoiler client 
+
 ## [7.0.0] - 2019-05-10
 
 - Changed compatibility with NodeBB v1.12.x
@@ -22,7 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [4.1.0] - 2017-03-11
 
-- Changed the icon in new version of redactor
+- Changed the icon in the new version of redactor
 
 ## [4.0.1] - 2017-02-08
 
