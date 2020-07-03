@@ -62,11 +62,11 @@ $(document).ready(function () {
     $(window).on('action:quill.load', function (ev, quill) {
         require(['quill', 'composer/formatting'], function (Quill, formatting) {
             // Override the composer-default handler for ns-spoiler and use one for Quill
-            const Delta = Quill.import('delta');
+            var Delta = Quill.import('delta');
 
             formatting.addButtonDispatch('ns-spoiler', function () {
-                const range = quill.getSelection();
-                let insertionDelta;
+                var range = quill.getSelection();
+                var insertionDelta;
 
                 if (range.length) {
                     insertionDelta = quill.getContents(range.index, range.length);
@@ -85,9 +85,9 @@ $(document).ready(function () {
 
                 if (range.length) {
                     // Update selection
-                    quill.setSelection(range.index + 5, range.length);
+                    quill.setSelection(range.index + (getTag().length), range.length);
                 } else {
-                    quill.setSelection(range.index + 5, textPrompt.length);
+                    quill.setSelection(range.index + (getTag().length), textPrompt.length);
                 }
             });
         });
