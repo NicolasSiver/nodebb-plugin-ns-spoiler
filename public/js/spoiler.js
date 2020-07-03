@@ -1,9 +1,8 @@
 /* globals define, app, ajaxify, bootbox, socket, templates, utils */
 
 require([
-    'forum/topic/images',
     'translator'
-], function (images, translator) {
+], function (translator) {
 
     var elements = {
         BUTTON : '.ns-spoiler-control a',
