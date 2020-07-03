@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [7.0.1] - 2020-07-03
 
 - Changed library dependencies to have the latest development and production libraries
-- Removed images module dependency from Spoiler client 
+- Removed images module dependency from Spoiler client (Thanks to julianlam)
 
 ## [7.0.0] - 2019-05-10
 
