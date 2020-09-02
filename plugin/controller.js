@@ -47,10 +47,11 @@
      */
     Controller.parsePost = function (payload, callback) {
         var content     = payload.postData.content,
+            pid         = payload.postData.pid,
             rejectParse = payload.postData[constants.PARSE_REJECT_TOKEN];
 
         if (content && !rejectParse) {
-            parser.parse(content, function (error, parsedContent) {
+            parser.parse(content, pid, function (error, parsedContent) {
                 payload.postData.content = parsedContent;
                 callback(error, payload);
             });
