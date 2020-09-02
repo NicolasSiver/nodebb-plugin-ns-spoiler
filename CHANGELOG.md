@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [7.1.0] - 2020-09-02
+
+- Added support for rendering beyond Topic pages (Thanks to julianlam)
+- Changed module dependencies to resole security issues with Lodash
+
 ## [7.0.1] - 2020-07-03
 
 - Changed library dependencies to have the latest development and production libraries
