@@ -28,13 +28,9 @@ require([
         var $spoiler = $button.parents(elements.MAIN),
             $content = $spoiler.find(elements.CONTENT),
             open     = $spoiler.attr('data-open') === 'true',
-            postId   = parseInt($spoiler.parents('[data-pid]').attr('data-pid')),
+            postId   = parseInt($spoiler.attr('data-pid')),
             index    = parseInt($spoiler.attr('data-index')),
             icon     = $button.find('i');
-
-        if (!postId || !index) {
-            return console.warn('[ns-spoiler] data-index or data-pid missing from spoiler element!');
-        }
 
         $spoiler.attr('data-open', !open);
 
