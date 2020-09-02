@@ -14,12 +14,12 @@ require([
         CLOSE_EYE: 'fa-eye-slash'
     };
 
-    $(window).on('action:topic.loading', function (e) {
-        addTopicListener();
+    $(window).on('action:ajaxify.end', function () {
+        addListeners();
     });
 
-    function addTopicListener() {
-        $('[component="topic"]').on("click", elements.BUTTON, function () {
+    function addListeners() {
+        $(elements.BUTTON).on("click", function () {
             toggle($(this));
         });
     }
@@ -31,6 +31,10 @@ require([
             postId   = parseInt($spoiler.parents('[data-pid]').attr('data-pid')),
             index    = parseInt($spoiler.attr('data-index')),
             icon     = $button.find('i');
+
+        if (!postId || !index) {
+            return console.warn('[ns-spoiler] data-index or data-pid missing from spoiler element!');
+        }
 
         $spoiler.attr('data-open', !open);
 
