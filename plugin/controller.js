@@ -50,7 +50,7 @@
             pid         = payload.postData.pid,
             rejectParse = payload.postData[constants.PARSE_REJECT_TOKEN];
 
-        if (content && !rejectParse) {
+        if (content && pid && !rejectParse) {
             parser.parse(content, pid, function (error, parsedContent) {
                 payload.postData.content = parsedContent;
                 callback(error, payload);
