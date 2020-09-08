@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-ns-spoiler",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "description": "Spoiler. Ability to control visibility of the content in posts. Works better with Markdown syntax.",
   "main": "./plugin/index.js",
   "scripts": {
