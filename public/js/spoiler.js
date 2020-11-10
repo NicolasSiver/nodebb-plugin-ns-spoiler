@@ -18,7 +18,7 @@ require([
         addListeners();
     });
 
-    function addListeners() {        
+    function addListeners() {
         $(elements.BUTTON).off('click').on("click", function () {
             toggle($(this));
         });
