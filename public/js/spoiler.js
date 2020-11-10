@@ -14,9 +14,9 @@ require([
         CLOSE_EYE: 'fa-eye-slash'
     };
 
-    $(window).on('action:ajaxify.end action:posts.edited action:posts.loaded', function () {        
+    $(window).on('action:ajaxify.end action:posts.edited action:posts.loaded', function () {
         addListeners();
-    });    
+    });
 
     function addListeners() {        
         $(elements.BUTTON).off('click').on("click", function () {
