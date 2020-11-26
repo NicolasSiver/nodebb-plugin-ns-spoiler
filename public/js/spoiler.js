@@ -14,12 +14,12 @@ require([
         CLOSE_EYE: 'fa-eye-slash'
     };
 
-    $(window).on('action:ajaxify.end', function () {
+    $(window).on('action:ajaxify.end action:posts.edited action:posts.loaded', function () {
         addListeners();
     });
 
     function addListeners() {
-        $(elements.BUTTON).on("click", function () {
+        $(elements.BUTTON).off('click').on("click", function () {
             toggle($(this));
         });
     }
