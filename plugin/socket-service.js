@@ -15,11 +15,7 @@
         callback();
     };
 
-    SocketService.getSpoilerContent = function (socket, payload, callback) {
-        if (!socket.uid) {
-            return callback(new Error('Connection is not authorized.'));
-        }
-
+    SocketService.getSpoilerContent = function (socket, payload, callback) {        
         controller.getSpoilerContent(Object.assign({}, {uid: socket.uid}, payload), callback);
     };
 
