@@ -14,6 +14,7 @@
         socketIndex  : NodeBB.require('./src/socket.io/index'),
         topics       : NodeBB.require('./src/topics'),
         user         : NodeBB.require('./src/user'),
+        privileges   : NodeBB.require('./src/privileges'),
 
         utils  : NodeBB.require('./public/src/utils'),
         helpers: NodeBB.require('./src/controllers/helpers'),

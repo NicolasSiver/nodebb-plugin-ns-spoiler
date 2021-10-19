@@ -24,7 +24,7 @@
             function chainParse(post, next) {
                 post[constants.PARSE_REJECT_TOKEN] = true;
 
-                nodebb.plugins.fireHook('filter:parse.post', {postData: post}, function (error, hookResult) {
+                nodebb.plugins.hooks.fire('filter:parse.post', {postData: post}, function (error, hookResult) {
                     if (error) {
                         return next(error);
                     }
