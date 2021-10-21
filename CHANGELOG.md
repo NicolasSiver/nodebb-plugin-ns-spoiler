@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [8.0.0] - 2021-10-21
+
+- Added support for Guest view (Thanks to barisusakli)
+- Changed compatibility with NodeBB v1.18.x
+
 ## [7.2.1] - 2020-11-26
 
 - Fixed infinite scrolling and post edits to provide missing Spoiler interactions (Thanks to tudor2004)
