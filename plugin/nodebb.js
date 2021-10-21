@@ -9,12 +9,12 @@
         plugins      : NodeBB.require('./src/plugins'),
         pluginSockets: NodeBB.require('./src/socket.io/plugins'),
         posts        : NodeBB.require('./src/posts'),
+        privileges   : NodeBB.require('./src/privileges'),
         serverSockets: NodeBB.require('./src/socket.io').server.sockets,
         settings     : NodeBB.require('./src/settings'),
         socketIndex  : NodeBB.require('./src/socket.io/index'),
         topics       : NodeBB.require('./src/topics'),
         user         : NodeBB.require('./src/user'),
-        privileges   : NodeBB.require('./src/privileges'),
 
         utils  : NodeBB.require('./public/src/utils'),
         helpers: NodeBB.require('./src/controllers/helpers'),
