@@ -1,6 +1,6 @@
 (function (SocketService) {
     'use strict';
-
+    var async = require('async');
     var constants  = require('./constants'),
         controller = require('./controller'),
         nodebb     = require('./nodebb');
@@ -16,11 +16,17 @@
     };
 
     SocketService.getSpoilerContent = function (socket, payload, callback) {
-        if (!socket.uid) {
-            return callback(new Error('Connection is not authorized.'));
-        }
-
-        controller.getSpoilerContent(Object.assign({}, {uid: socket.uid}, payload), callback);
+        async.waterfall([
+            function (next) {
+                nodebb.privileges.posts.can('read', payload.postId, next);
+            },
+            function (canRead, next) {
+                if (!canRead) {
+                    return next(new Error('[[error:no-privileges]]'))
+                }
+                controller.getSpoilerContent(Object.assign({}, {uid: socket.uid}, payload), next);
+            }
+        ], callback);
     };
 
 })(module.exports);
